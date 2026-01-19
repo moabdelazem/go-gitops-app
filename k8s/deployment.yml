@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-gitops-app
+spec:
+  replicas: 1 # Horizontal Pod Autoscaler will scale this up based on CPU usage
+  selector:
+    matchLabels:
+      app: go-gitops-app
+  template:
+    metadata:
+      labels:
+        app: go-gitops-app
+    spec:
+      containers:
+      - name: go-gitops-app
+        image: moabdelazem/go-gitops-app:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: go-gitops-app-config
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10

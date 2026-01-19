@@ -121,7 +121,7 @@ func HealthHandler(w http.ResponseWriter, r *http.Request) {
 // Response: JSON with status, duration, and worker count.
 //
 // ! WARNING: This endpoint is intended for testing purposes and the nature of this experimental api
-// ! Real applications have something like this
+// ! Real applications does not have something like this
 func StressHandler(w http.ResponseWriter, r *http.Request) {
 	// Track request metrics for monitoring
 	metrics.TrackRequest(r.URL.Path, r.Method)
