@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: go-gitops-app
 spec:
-  replicas: 1 # Horizontal Pod Autoscaler will scale this up based on CPU usage
+  # replicas is intentionally omitted - HPA controls scaling
   selector:
     matchLabels:
       app: go-gitops-app
