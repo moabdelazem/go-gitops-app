@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     app: go-gitops-app
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
   # The service is seted to NodePort for testing purposes only 
   # our cluster doesnot have ingress resource or loadbalancer
   # so we can access the service using nodeport for now!
   type: NodePort
-  nodePort: 30008
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30008
