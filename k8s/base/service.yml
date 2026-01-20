@@ -13,4 +13,4 @@ spec:
   # our cluster doesnot have ingress resource or loadbalancer
   # so we can access the service using nodeport for now!
   type: NodePort
-  nodePort: 30080
+  nodePort: 30008
