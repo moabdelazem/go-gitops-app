@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+namespace: go-gitops-prod
+
+images:
+  - name: moabdelazem/go-gitops-app
+    newTag: latest
+
+configMapGenerator:
+  - name: go-gitops-app-config
+    behavior: replace
+    literals:
+      - PORT=8080
+      - LOG_LEVEL=info
